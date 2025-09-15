@@ -1,0 +1,50 @@
+env {
+  parallelism = 2
+  job.mode = "BATCH"
+}
+
+source{
+  Jdbc {
+  url = "jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2b8&useUnicode=true&characterEncoding=UTF-8&rewriteBatchedStatements=true&useSSL=false&allowPublicKeyRetrieval=true"
+  driver = "com.mysql.cj.jdbc.Driver"
+  connection_check_timeout_sec = 100
+  user = "root"
+  password = "123456"
+  query = "select id, activity_id, activity_type, condition_amount, condition_num, benefit_amount, benefit_discount, benefit_level, create_time, operate_time, DATE_FORMAT(NOW(), '%Y%m%d') as ds from realtime_v1.activity_rule;"
+}
+}
+
+transform {
+
+}
+
+sink {
+    console{
+
+Hive {
+table_name = "t1"
+metastore_uri = "thrift://cdh02:9083"
+hive.hadoop.conf-path = "/etc/hadoop/conf"
+save_mode = "overwrite"
+partition_by = ["ds"]
+dynamic_partition = true
+file_format = "orc"
+orc_compress = "SNAPPY"
+tbl_properties = {
+"external.table.purge" = "true"
+}
+fields = [
+"id",
+"activity_id",
+"activity_type",
+"condition_amount",
+"condition_num",
+"benefit_amount",
+"benefit_discount",
+"benefit_level",
+"ds"
+]
+}
+
+}
+}
