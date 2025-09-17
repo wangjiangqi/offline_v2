@@ -22,27 +22,19 @@ sink {
     console{
 
 Hive {
-table_name = "t1"
-metastore_uri = "thrift://cdh02:9083"
-hive.hadoop.conf-path = "/etc/hadoop/conf"
+table_name = "demo"
+metastore_uri = "hive://cdh03:10000"
+hive.hadoop.conf-path = "/user/"
 save_mode = "overwrite"
 partition_by = ["ds"]
 dynamic_partition = true
-file_format = "orc"
+file_format = "text"
 orc_compress = "SNAPPY"
 tbl_properties = {
 "external.table.purge" = "true"
 }
 fields = [
-"id",
-"activity_id",
-"activity_type",
-"condition_amount",
-"condition_num",
-"benefit_amount",
-"benefit_discount",
-"benefit_level",
-"ds"
+"id","name"
 ]
 }
 
