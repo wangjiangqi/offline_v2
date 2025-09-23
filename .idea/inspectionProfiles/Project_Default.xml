@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="logging" />
+          <option value="py.etl_gmall.pyspark" />
         </list>
       </option>
     </inspection_tool>
