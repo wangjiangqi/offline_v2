@@ -18,7 +18,7 @@ print("Spark version:", spark.version)
 spark.stop()
 
 
-SparkSession.builder()
+# SparkSession.builder()
 
 
 
