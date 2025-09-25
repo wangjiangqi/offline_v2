@@ -11,6 +11,7 @@ from sqlalchemy.exc import SQLAlchemyError
 import requests
 import os
 import logging
+
 urllib3.disable_warnings()
 
 
