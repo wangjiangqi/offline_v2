@@ -8,6 +8,10 @@
     <artifactId>org.example</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <modules>
+        <module>strem_common</module>
+        <module>strem_relatime</module>
+    </modules>
 
 
     <properties>
